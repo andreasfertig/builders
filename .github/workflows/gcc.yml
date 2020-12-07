@@ -1,6 +1,6 @@
 name: gcc
 
-on: 
+on:
   push:
     tags: gcc_*
 
@@ -42,6 +42,7 @@ jobs:
         CXX: clang++
         CC: clang
       run: |
+        export MACOSX_DEPLOYMENT_TARGET=10.14
         export PATH=`pwd`:$PATH
         echo "${{ steps.get_tag_name.outputs.VERSION }}"
         echo $HOME
@@ -57,11 +58,11 @@ jobs:
         export CXXFLAGS="-Wno-everything"
         export CFLAGS="-Wno-everything"
         ../gcc-${{ steps.get_tag_name.outputs.VERSION }}/configure CXXFLAGS="-Wno-everything" CFLAGS="-Wno-everything" --prefix=/usr/local/gcc-${{ steps.get_tag_name.outputs.VERSION }} --enable-checking=release --enable-languages=c,c++ --enable-silent-rules --disable-multilib --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk --program-suffix=-10
-        make -j 2&> log.txt && tail -n 200 log.txt || tail -n 200 log.txt 
+        make -j 2&> log.txt && tail -n 200 log.txt || tail -n 200 log.txt
         echo "build finished"
         sudo mkdir -p /usr/local/gcc-${{ steps.get_tag_name.outputs.VERSION }}
         sudo chmod 0777 /usr/local/gcc-${{ steps.get_tag_name.outputs.VERSION }}
-        ls -l /usr/local        
+        ls -l /usr/local
         make install-strip
         tar -cJf ../../gcc-${{ steps.get_tag_name.outputs.VERSION }}.tar.xz -C /usr/local/gcc-${{ steps.get_tag_name.outputs.VERSION }} /usr/local/gcc-${{ steps.get_tag_name.outputs.VERSION }}
 
