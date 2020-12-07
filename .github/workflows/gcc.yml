@@ -42,7 +42,7 @@ jobs:
         CXX: clang++
         CC: clang
       run: |
-        export MACOSX_DEPLOYMENT_TARGET=10.14
+        #        export MACOSX_DEPLOYMENT_TARGET=10.14
         export PATH=`pwd`:$PATH
         echo "${{ steps.get_tag_name.outputs.VERSION }}"
         echo $HOME
