@@ -21,7 +21,7 @@ jobs:
         # AppleClang
         - {
             name: "macOS Clang",
-            os: macos-11,
+            os: macos-13,
             build_type: Release,
           }
 
