@@ -28,5 +28,5 @@ sudo chmod 0777 ${INSTALL_PATH}
 ninja install
 #cd $HOME
 echo "${INSTALL_NAME}.tar.xz"
-echo "tar -cJf $HOME/${INSTALL_NAME}.tar.xz -C ${INSTALL_PATH}"
-tar -cJf $HOME/${INSTALL_NAME}.tar.xz -C ${INSTALL_PATH} ${INSTALL_PATH}
+echo "tar -cJf $HOME/${INSTALL_NAME}.tar.xz -C ${INSTALL_PATH}/../ ${INSTALL_NAME}"
+tar -cJf $HOME/${INSTALL_NAME}.tar.xz -C ${INSTALL_PATH}/../ ${INSTALL_NAME}
