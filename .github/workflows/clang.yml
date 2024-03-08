@@ -21,7 +21,7 @@ jobs:
         # AppleClang
         - {
             name: "macOS Clang",
-            os: macos-13,
+            os: macos-14,
             build_type: Release,
           }
 
@@ -89,6 +89,7 @@ jobs:
         CC: clang
       run: |
         export PATH=`pwd`:$PATH
+        uname -m
         ls -l
         echo "${{ steps.get_tag_name.outputs.VERSION }}"
         ./llvm-release-build.sh `pwd`/llvm-project ${{ steps.get_tag_name.outputs.VERSION }}
@@ -97,6 +98,6 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: clang+llvm-${{ steps.get_tag_name.outputs.VERSION }}-x86_64-apple-darwin
-        path: '~/clang+llvm-${{ steps.get_tag_name.outputs.VERSION }}-x86_64-apple-darwin.tar.xz'
+        name: clang+llvm-${{ steps.get_tag_name.outputs.VERSION }}-arm64-apple-darwin
+        path: '~/clang+llvm-${{ steps.get_tag_name.outputs.VERSION }}-arm64-apple-darwin.tar.xz'
 
