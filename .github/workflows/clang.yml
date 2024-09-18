@@ -96,7 +96,7 @@ jobs:
         ls -l
         pwd
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: clang+llvm-${{ steps.get_tag_name.outputs.VERSION }}-arm64-apple-darwin
         path: '~/clang+llvm-${{ steps.get_tag_name.outputs.VERSION }}-arm64-apple-darwin.tar.xz'
